@@ -1,0 +1,332 @@
+.page {
+  --accent: #c8f169;
+  --line: #2a2e37;
+  --sub: #c9ccd3;
+  --coral: #ff7a59;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.page a {
+  color: inherit;
+}
+
+/* decoration */
+.orb {
+  position: absolute;
+  top: 140px;
+  right: 6%;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.9;
+  transition: background 0.4s;
+}
+
+.square {
+  position: absolute;
+  top: 420px;
+  right: 22%;
+  width: 90px;
+  height: 90px;
+  border: 3px solid var(--coral);
+  border-radius: 18px;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-22px) rotate(8deg); }
+}
+@keyframes drift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(26px); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+
+.floaty { animation: floaty 7s ease-in-out infinite; }
+.drift { animation: drift 9s ease-in-out infinite; }
+.rise { animation: rise 0.8s ease both; }
+.hero .rise:nth-child(2) { animation-delay: 0.12s; }
+.hero .rise:nth-child(3) { animation-delay: 0.3s; }
+.hero .rise:nth-child(4) { animation-delay: 0.45s; }
+
+/* header */
+.header {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 28px 6%;
+}
+
+.logo {
+  font-family: "Shippori Mincho", serif;
+  font-weight: 800;
+  font-size: 22px;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  font-size: 15px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--sub);
+  transition: color 0.2s;
+}
+.nav a:hover { color: var(--accent); }
+
+/* hero */
+.hero {
+  position: relative;
+  max-width: 1100px;
+  padding: 96px 6% 120px;
+}
+
+.eyebrow {
+  margin-bottom: 16px;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.h1 {
+  font-family: "Shippori Mincho", serif;
+  font-weight: 800;
+  font-size: clamp(44px, 8vw, 104px);
+  line-height: 1.15;
+}
+
+.lead {
+  margin-top: 36px;
+  max-width: 520px;
+  font-size: 18px;
+  color: var(--sub);
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 16px 32px;
+  background: var(--accent);
+  color: #101216 !important;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: transform 0.2s;
+}
+.cta:hover { transform: scale(1.05); }
+
+/* marquee */
+.marqueeWrap {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: marquee 26s linear infinite;
+}
+.track:hover { animation-play-state: paused; }
+
+.skill {
+  font-family: "Shippori Mincho", serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #8b91a0;
+  white-space: nowrap;
+}
+.slash { color: var(--coral); }
+
+/* sections */
+.section {
+  max-width: 1200px;
+  padding: 40px 6% 112px;
+}
+
+.h2 {
+  margin-bottom: 40px;
+  font-family: "Shippori Mincho", serif;
+  font-size: 40px;
+}
+
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  padding-top: 112px;
+}
+.about .h2 { flex: 1 1 240px; margin: 0; }
+.aboutBody {
+  flex: 3 1 420px;
+  min-width: 0;
+  font-size: 17px;
+  color: #d6d9df;
+}
+.aboutBody p + p { margin-top: 20px; }
+
+/* cards */
+.card {
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s;
+}
+.card:hover { transform: translateY(-6px); }
+
+.works {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.workList {
+  flex: 1 1 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.workBtn {
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  padding: 20px 24px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: transparent;
+  min-height: 44px;
+}
+.workBtn.active {
+  border-color: var(--accent);
+  background: #1d2129;
+}
+
+.no {
+  display: block;
+  font-size: 13px;
+  color: var(--accent);
+}
+.workTitle { font-weight: 700; font-size: 17px; }
+
+.detail {
+  flex: 2 1 380px;
+  min-width: 0;
+  padding: 40px;
+  border-radius: 24px;
+  background: #181b21;
+  border: 1px solid var(--line);
+  color: #d6d9df;
+  font-size: 17px;
+  animation: rise 0.5s ease both;
+}
+
+.tag {
+  margin-bottom: 8px;
+  color: var(--coral);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.h3 {
+  margin-bottom: 20px;
+  font-family: "Shippori Mincho", serif;
+  font-size: 30px;
+  line-height: 1.4;
+  color: #f2f3f5;
+}
+
+.career {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.box {
+  padding: 28px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: #181b21;
+  color: #d6d9df;
+}
+.wide { grid-column: span 2; padding: 32px; }
+
+.period { font-size: 14px; color: var(--accent); }
+.h3s { margin: 4px 0 12px; font-size: 20px; color: #f2f3f5; }
+.box:not(.wide) .h3s { margin-bottom: 0; }
+
+/* contact */
+.contact {
+  padding: 80px 6% 120px;
+  text-align: center;
+  border-top: 1px solid var(--line);
+  color: var(--sub);
+}
+
+.big {
+  margin-bottom: 16px;
+  font-family: "Shippori Mincho", serif;
+  font-size: clamp(32px, 6vw, 56px);
+  color: #f2f3f5;
+}
+
+.mail {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 16px 32px;
+  border: 2px solid var(--accent);
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  color: #f2f3f5 !important;
+  transition: background 0.2s, color 0.2s;
+}
+.mail:hover {
+  background: var(--accent);
+  color: #101216 !important;
+}
+
+.swatches {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 48px;
+}
+
+.swatch {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .orb { width: 120px; height: 120px; top: 100px; }
+  .square { display: none; }
+  .wide { grid-column: span 1; }
+  .career { grid-template-columns: minmax(0, 1fr); }
+  .detail { padding: 28px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floaty, .drift, .rise, .track, .detail { animation: none; }
+}
